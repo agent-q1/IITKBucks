@@ -11,11 +11,10 @@ app.get("/",(req,res)=>{
 });
 
 app.post("/hash",(req,res)=>{
-  console.log(req.body.hashdata);
+
   const hashString = JSON.parse(req.body.hashdata);
-  console.log(hashString.data);
-  const hash = crypto.createHash('md5').update(hashString.data).digest('hex');
-  console.log(hash);
+  const hash = crypto.createHash('sha256').update(hashString.data).digest('hex');
+  console.log('String : \'' +hashString.data +'\' hashed to  \''+hash+ '\'');
   const postHash = {
     "hash" : hash
   }
